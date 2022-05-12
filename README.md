@@ -13,9 +13,9 @@ Regarding to BG/BND model, we saw through implementation that concepts arising f
 
 Along the code I commented some of the main insights and assumptions to take into account for modeling part.
 
-### The model built to estimate the probability to be alive for a given frequency, recency and customer age (T) could be used through the following processes:
+## The model built to estimate the probability to be alive for a given frequency, recency and customer age (T) could be used through the following processes:
 
-#### Using in the cloud with GCP
+### Using in the cloud with GCP
 In order to use the endpoint deployed in GCP, you should to send a POST request to the URL **https://influurtest-hackgnq7gq-uc.a.run.app/predict** with the following structure:
 
 "{'frequency':30, 'recency':100, 'T':215}"
@@ -26,16 +26,19 @@ Here these made reference to the parameters for a given customer.
    - "recency": Difference between the first and last purchase for a customer
    - "T": Customer age, it is the difference between the first purchase and the current date
 
-#### Using a local environment
+### Using a local environment
 In order to use this method is needed to use Python 3.8.8 installed
 
 **Install the requirements**
+
 pip install -r requirements.txt
 
 **Run the server in local**
+
 uvicorn main:app --port 8080 --reload
 
 **In order to make predictions**
+
 Send a POST request to **http://localhost:8080/predict** with a JSON following the structure bellow:
 
 "{'frequency':30, 'recency':100, 'T':215}"
@@ -46,8 +49,9 @@ Here these made reference to the parameters for a given customer.
    - "recency": Difference between the first and last purchase for a customer
    - "T": Customer age, it is the difference between the first purchase and the current date
 
-#### Possible responses examples
+### Possible responses examples
 **Success**
+
 {
     "code": 200,
     "status": "success",
@@ -57,6 +61,7 @@ Here these made reference to the parameters for a given customer.
 }
 
 **Failure**
+
 {
     "code": 503,
     "message": {
